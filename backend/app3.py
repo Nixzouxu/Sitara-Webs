@@ -10,7 +10,7 @@ CORS(app) # Mengaktifkan CORS untuk semua rute
 try:
     # Memuat model yang baru dilatih
     model = joblib.load("model/kista_model_final_detailed.joblib")
-    print("Model Cyst Predictor  berhasil dimuat!")
+    print("Model Cyst Predictor berhasil dimuat!")
 except FileNotFoundError:
     print("Error: File 'kista_model_final_detailed.joblib' tidak ditemukan. Pastikan file ada di direktori yang sama.")
     model = None

@@ -206,30 +206,30 @@ const Forum = () => {
     });
   };
 
-  if (!user) {
-    return <Navigate to="/login" replace />;
-  }
+  
 
   // Tampilan detail topik (jika ada topik yang dipilih)
   if (selectedTopic) {
     return (
       
       <Layout user={user} onLogout={logout}> {/* Fix: Changed user.logout to logout */}
-      {/* Tombol kembali langsung di halaman */}
+     
+        
           <div className="mb-6">
-            <Button asChild variant="outline" className="flex items-center gap-2">
-              <Link to="/dashboard">
-                <ArrowLeft className="w-4 h-4" />
-                Kembali ke Dashboard
-              </Link>
-            </Button>
-          </div>
+  <Button asChild variant="outline" className="flex items-center gap-2 bg-rose-500 hover:bg-rose-600 text-white">
+    <Link to="/dashboard">
+      <ArrowLeft className="w-4 h-4" />
+      Kembali ke Dashboard
+    </Link>
+  </Button>
+</div>
         <div className="container mx-auto px-4 py-8">
           <Button 
             variant="ghost" 
             onClick={() => setSelectedTopic(null)} // Kembali ke daftar topik
             className="mb-6 flex items-center gap-2"
           >
+            
             <ArrowLeft className="w-4 h-4" /> Kembali ke Forum
           </Button>
           <Card className="shadow-soft border-0 mb-6">
@@ -318,7 +318,21 @@ const Forum = () => {
 
   // Tampilan daftar topik (default view)
   return (
+    
     <Layout user={user} onLogout={logout}> {/* Fix: Changed user.logout to logout */}
+      <div className="container mx-auto px-4 py-8">
+        <div className="max-w-6xl mx-auto">
+          {/* Header */}
+           {/* Tombol kembali langsung di halaman */}
+          <div className="mb-6">
+            <Button asChild variant="outline" className="flex items-center gap-2">
+              <Link to="/dashboard">
+                Kembali ke Dashboard
+              </Link>
+            </Button>
+          </div>
+          </div>
+          </div>
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-4xl mx-auto">
           {/* Header */}

@@ -85,7 +85,6 @@ const Consultation = () => {
           <div className="mb-6">
             <Button asChild variant="outline" className="flex items-center gap-2">
               <Link to="/dashboard">
-                <ArrowLeft className="w-4 h-4" />
                 Kembali ke Dashboard
               </Link>
             </Button>

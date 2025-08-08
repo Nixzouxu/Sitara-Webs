@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Heart, Menu, User, LogOut } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import {
   Sheet,
   SheetContent,
@@ -23,9 +24,16 @@ interface HeaderProps {
   onLogout?: () => void;
 }
 
+
 export function Header({ user, onLogout }: HeaderProps) {
   const location = useLocation();
+  const navigate = useNavigate(); // <- ini
   const [isOpen, setIsOpen] = useState(false);
+
+  const handleLogout = () => {
+    if (onLogout) onLogout();      // misalnya hapus token, dsb
+    navigate("/");                 // redirect ke index
+  };
 
   const navigation = [
     { name: "Dashboard", href: "/dashboard" },
@@ -84,13 +92,14 @@ export function Header({ user, onLogout }: HeaderProps) {
                 <DropdownMenuContent className="w-56" align="end">
                   <div className="flex items-center justify-start gap-2 p-2">
                     <div className="flex flex-col space-y-1 leading-none">
-                      
+                      <p className="font-medium">{user.name}</p>
+                     
                     </div>
                   </div>
                   <DropdownMenuItem asChild>
-                   
+                    
                   </DropdownMenuItem>
-                  <DropdownMenuItem onClick={onLogout} className="cursor-pointer">
+                  <DropdownMenuItem onClick={handleLogout} className="cursor-pointer">
                     <LogOut className="mr-2 h-4 w-4" />
                     <span>Keluar</span>
                   </DropdownMenuItem>
