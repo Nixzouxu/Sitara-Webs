@@ -64,25 +64,29 @@ Beberapa kista bersifat jinak dan hilang sendiri tanpa perlu operasi, sedangkan 
     views: 1890,
     difficulty: "beginner",
     content: `
-      **Gejala Umum Kista Ovarium:**
-      
-      • **Nyeri panggul** - Dapat berupa nyeri tumpul atau tajam
-      • **Perubahan siklus menstruasi** - Tidak teratur, lebih berat, atau berhenti
-      • **Perut kembung** - Perasaan penuh atau begah
-      • **Sering buang air kecil** - Akibat tekanan pada kandung kemih
-      • **Nyeri saat berhubungan** - Terutama penetrasi dalam
-      • **Mual dan muntah** - Terutama pada kista besar
-      
-      **Tanda Bahaya yang Memerlukan Perhatian Medis Segera:**
-      - Nyeri panggul yang tiba-tiba dan hebat
-      - Demam dengan nyeri panggul
-      - Pusing atau lemas
-      - Pernapasan cepat
-      
-      **Kapan Berkonsultasi:**
-      - Gejala berlangsung lebih dari beberapa siklus menstruasi
-      - Nyeri panggul mengganggu aktivitas sehari-hari
-      - Ada benjolan yang dapat diraba di perut
+     Kista ovarium, terutama yang berukuran besar, bisa menimbulkan beberapa gejala yang
+dirasakan oleh penderita. Menurut kajian oleh Suryoadji dan teman-teman (2022) dalam
+Jurnal Khazanah, gejala yang sering muncul antara lain perasaan penuh atau begah di perut,
+mudah kenyang saat makan, sering ingin buang air kecil, serta rasa nyeri di area perut. Jika
+kista ovarium sudah berubah menjadi ganas atau kanker, gejalanya bisa lebih serius dan
+beragam. Ini karena kanker dapat menyebar (metastasis) ke berbagai bagian tubuh, seperti area
+perut dan bahkan payudara. Gejala yang mungkin muncul meliputi rasa lemah atau tidak enak
+badan (malaise), berat badan turun tanpa sebab yang jelas, nyeri di area yang terkena (misalnya
+nyeri perut atau nyeri dada), dan kesulitan bernapas. Riwayat menstruasi juga sangat penting,
+seperti apakah ada nyeri saat haid, pendarahan haid yang lebih banyak dari biasanya, atau
+siklus haidyang berubah-ubah (memanjang, memendek, atau tidak teratur).
+Penelitian dari Alfin Lathifatul Arifah dan Suhartono (2022) di Universitas
+Diponegoro menambahkan beberapa gejala kista ovarium yang umum ditemukan, antara lain:
+1. Rasa nyeri di daerah panggul.
+2. Nyeri saat menstruasi.
+3. Perut membesar atau terasa ada benjolan di bagian bawah perut.
+4. Masa haid yang lebih lama dari 14 hari atau lebih pendek dari 3 hari.
+5. Siklus haid yang tidak teratur.
+6. Gangguan pencernaan, seperti perut kembung, diare, susah menelan, atau susah
+mengunyah.
+7. Mual dan muntah.
+Dengan mengetahui gejala-gejala ini, diharapkan wanita dapat lebih waspada dan segera
+memeriksakan diri jika merasakan tanda-tanda tersebut agar dapat ditangani dengan baik.
     `
   },
   {
@@ -95,33 +99,50 @@ Beberapa kista bersifat jinak dan hilang sendiri tanpa perlu operasi, sedangkan 
     views: 1520,
     difficulty: "intermediate",
     content: `
-      **Faktor Risiko Utama:**
-      
-      **1. Usia**
-      - Paling umum pada usia reproduktif (15-44 tahun)
-      - Risiko kanker ovarium meningkat setelah menopause
-      
-      **2. Riwayat Medis**
-      - Endometriosis
-      - Sindrom ovarium polikistik (PCOS)
-      - Infertilitas
-      - Riwayat kista ovarium sebelumnya
-      
-      **3. Genetik dan Keluarga**
-      - Riwayat keluarga kanker ovarium/payudara
-      - Mutasi gen BRCA1 atau BRCA2
-      
-      **4. Hormonal**
-      - Menstruasi dini (sebelum 11 tahun)
-      - Menopause lambat (setelah 55 tahun)
-      - Tidak pernah hamil
-      - Terapi hormon estrogen
-      
-      **5. Gaya Hidup**
-      - Obesitas
-      - Merokok
-      - Diet tinggi lemak
-      - Kurang aktivitas fisik
+     Berdasarkan Jurnal Raja et al. (2023) dan penelitian pendukung yang diulas dalam jurnal lain
+(misalnya, Herawati, Kusumawati & Hidayat, 2011; Adriani, P., 2018; Aininna, 2015),
+beberapa faktor yang berkontribusi pada pembentukan kista ovarium meliputi:
+1. Faktor Fisiologis dan Hormonal
+• Siklus Menstruasi Normal: Kista sering terbentuk karena proses ovulasi yang
+biasa terjadi. Kadang folikel (kantung kecil yang berisi sel telur) tidak pecah
+atau korpus luteum (struktur yang terbentuk setelah ovulasi) tetap ada. Ini yang
+menyebabkan terbentuknya kista ovarium.
+• Pengobatan Infertilitas: Wanita yang menjalani perawatan kesuburan dengan
+obat-obatan seperti gonadotropin mempunyai risiko lebih tinggi mengalami
+kista karena ovarium bisa terlalu aktif (sindrom hiperstimulasi ovarium).
+• Penggunaan Tamoxifen: Obat ini yang sering dipakai untuk mengobati kanker
+payudara dapat meningkatkan kemungkinan munculnya kista ovarium.
+• Kehamilan: Kista bisa terbentuk selama kehamilan, terutama di trimester
+kedua saat hormon hCG meningkat.
+• Hipotiroidisme: Kondisi tiroid yang kurang aktif juga dapat mempengaruhi
+terbentuknya kista ovarium.
+• Gonadotropin Maternal: Hormon dari ibu yang lewat plasenta bisa
+memengaruhi perkembangan kista pada janin.
+2. Faktor Genetik dan Riwayat Keluarga
+• Riwayat Keluarga: Jika anggota keluarga memiliki riwayat kista ovarium atau
+kanker ovarium, risiko Anda juga lebih tinggi terkena kista. Semakin banyak
+anggota keluarga yang pernah mengalami dan semakin dekat hubungan
+keluarga, risikonya semakin besar.
+• Keturunan Biologis: Faktor keturunan juga ikut mendukung terbentuknya
+kista.
+3. Faktor Gaya Hidup dan Lingkungan
+• Merokok: Kebiasaan merokok dapat meningkatkan risiko kista ovarium.
+• Pola Makan Buruk: Mengonsumsi makanan yang tidak sehat, seperti banyak
+makanan instan, juga berperan dalam meningkatkan risiko kista.
+• Stres Kronis dan Paparan Polutan: Stres yang terus-menerus dan paparan
+bahan berbahaya di lingkungan juga memengaruhi kemungkinan munculnya
+kista.
+4. Faktor Medis dan Intervensi Lain
+• Dismenorea: Nyeri haid yang berat dapat meningkatkan risiko terbentuknya
+kista.
+• Ligasi Tuba: Wanita yang pernah menjalani ligasi tuba (sterilisasi dengan
+pengikatan tuba falopi) juga berisiko mengalami kista fungsional.
+• Infeksi: Riwayat infeksi juga bisa menjadi faktor yang mendukung
+terbentuknya kista ovarium.
+• Usia: Kista ovarium lebih sering terjadi pada usia subur (sekitar 20-50 tahun).
+Beberapa penelitian menunjukkan kista juga bisa muncul pada usia muda
+setelah masa menarche (pertama kali menstruasi), meskipun hubungan ini
+belum selalu konsisten.
     `
   },
   {

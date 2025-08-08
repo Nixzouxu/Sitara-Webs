@@ -84,7 +84,7 @@ const Consultation = () => {
            {/* Tombol kembali langsung di halaman */}
           <div className="mb-6">
             <Button asChild variant="outline" className="flex items-center gap-2">
-              <Link to="/dashboard">
+              <Link to="/dashboard">  
                 Kembali ke Dashboard
               </Link>
             </Button>
