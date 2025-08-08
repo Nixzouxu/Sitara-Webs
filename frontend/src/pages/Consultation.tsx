@@ -16,34 +16,34 @@ const Consultation = () => {
   const doctors = [
     {
       id: 1,
-      name: "Dr. Sarah Wijaya, Sp.OG",
+      name: "dr. Cut Mustika, Sp.OG",
       specialty: "Spesialis Kandungan",
       rating: 4.9,
       experience: "15 tahun",
-      location: "RS Mayapada Jakarta",
+      location: "RS Harapan Bunda",
       price: "Rp 150.000",
       available: true,
       nextSlot: "Hari ini, 14:00"
     },
     {
       id: 2,
-      name: "Dr. Maya Sari, Sp.OG",
-      specialty: "Spesialis Kandungan & Reproduksi",
+      name: "dr. Malahayati",
+      specialty: "Spesialis Kelamin",
       rating: 4.8,
       experience: "12 tahun",
-      location: "RSPI Pondok Indah",
-      price: "Rp 200.000",
+      location: "Klinik Pratama USK",
+      price: "Free",
       available: true,
       nextSlot: "Besok, 09:00"
     },
     {
       id: 3,
-      name: "Dr. Rina Kusuma, Sp.OG",
+      name: "dr. Rina Kusuma, Sp.OG",
       specialty: "Spesialis Kandungan",
       rating: 4.7,
       experience: "10 tahun",
-      location: "RS Siloam Kebon Jeruk",
-      price: "Rp 125.000",
+      location: "RSUD Zainal Abidin",
+      price: "Rp 80.000",
       available: false,
       nextSlot: "2 hari lagi, 10:30"
     }

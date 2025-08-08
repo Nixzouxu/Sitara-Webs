@@ -16,6 +16,7 @@ import {
   Lock
 } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
+import { ReactLogo, NodeLogo, PostgreSQLLogo, PythonLogo } from "@/components/TechStackLogos";
 
 const Index = () => {
   const { user } = useAuth();
@@ -136,16 +137,125 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-16 px-4 bg-card/50">
-        <div className="container mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            {stats.map((stat, index) => (
-              <div key={index}>
-                <h3 className="text-3xl font-bold text-primary mb-2">{stat.number}</h3>
-                <p className="text-muted-foreground">{stat.label}</p>
+      {/* Tech Stack Section */}
+      <section className="py-16 px-4 bg-gradient-to-r from-background via-card/30 to-background overflow-hidden">
+        <div className="container mx-auto text-center mb-12">
+          <h2 className="text-2xl md:text-3xl font-bold mb-4 text-foreground">
+            Dibangun dengan Teknologi Terdepan
+          </h2>
+          <p className="text-muted-foreground">
+            Platform SITARA menggunakan teknologi modern untuk memberikan pengalaman terbaik
+          </p>
+        </div>
+        
+        {/* Animated Tech Stack Logos */}
+        <div className="relative">
+          {/* Gradient borders for catchiness */}
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/20 via-accent/20 to-primary/20 rounded-3xl blur-xl"></div>
+          <div className="relative bg-card/80 backdrop-blur-sm border-2 border-gradient-to-r from-primary/30 via-accent/30 to-primary/30 rounded-2xl p-6 shadow-lg">
+            <div className="flex animate-scroll-infinite space-x-20 items-center">
+              {/* First set of logos */}
+              <div className="flex space-x-20 items-center min-w-fit">
+                <div className="flex flex-col items-center group hover:scale-110 transition-all duration-300">
+                  <div className="w-20 h-20 bg-gradient-to-br from-[#61DAFB] to-[#21D4FD] rounded-xl flex items-center justify-center shadow-lg mb-3 border-2 border-white/20 group-hover:border-white/40 transition-all">
+                    <ReactLogo className="w-12 h-12 text-white" />
+                  </div>
+                  <span className="text-sm font-medium text-muted-foreground">React</span>
+                  <span className="text-xs text-muted-foreground/70">Frontend</span>
+                </div>
+                
+                <div className="flex flex-col items-center group hover:scale-110 transition-all duration-300">
+                  <div className="w-20 h-20 bg-gradient-to-br from-[#68A063] to-[#44883e] rounded-xl flex items-center justify-center shadow-lg mb-3 border-2 border-white/20 group-hover:border-white/40 transition-all">
+                    <NodeLogo className="w-12 h-12 text-white" />
+                  </div>
+                  <span className="text-sm font-medium text-muted-foreground">Node.js</span>
+                  <span className="text-xs text-muted-foreground/70">Backend</span>
+                </div>
+                
+                <div className="flex flex-col items-center group hover:scale-110 transition-all duration-300">
+                  <div className="w-20 h-20 bg-gradient-to-br from-[#336791] to-[#2d5aa0] rounded-xl flex items-center justify-center shadow-lg mb-3 border-2 border-white/20 group-hover:border-white/40 transition-all">
+                    <PostgreSQLLogo className="w-12 h-12 text-white" />
+                  </div>
+                  <span className="text-sm font-medium text-muted-foreground">PostgreSQL</span>
+                  <span className="text-xs text-muted-foreground/70">Database</span>
+                </div>
+                
+                <div className="flex flex-col items-center group hover:scale-110 transition-all duration-300">
+                  <div className="w-20 h-20 bg-gradient-to-br from-[#3776ab] to-[#ffd343] rounded-xl flex items-center justify-center shadow-lg mb-3 border-2 border-white/20 group-hover:border-white/40 transition-all">
+                    <PythonLogo className="w-12 h-12 text-white" />
+                  </div>
+                  <span className="text-sm font-medium text-muted-foreground">Python</span>
+                  <span className="text-xs text-muted-foreground/70">AI/ML</span>
+                </div>
+                
+                <div className="flex flex-col items-center group hover:scale-110 transition-all duration-300">
+                  <div className="w-20 h-20 bg-gradient-to-br from-primary to-primary-glow rounded-xl flex items-center justify-center shadow-lg mb-3 border-2 border-white/20 group-hover:border-white/40 transition-all">
+                    <Brain className="w-10 h-10 text-white" />
+                  </div>
+                  <span className="text-sm font-medium text-muted-foreground">AI Engine</span>
+                  <span className="text-xs text-muted-foreground/70">Intelligence</span>
+                </div>
+                
+                <div className="flex flex-col items-center group hover:scale-110 transition-all duration-300">
+                  <div className="w-20 h-20 bg-gradient-to-br from-accent to-accent/70 rounded-xl flex items-center justify-center shadow-lg mb-3 border-2 border-white/20 group-hover:border-white/40 transition-all">
+                    <Shield className="w-10 h-10 text-white" />
+                  </div>
+                  <span className="text-sm font-medium text-muted-foreground">Security</span>
+                  <span className="text-xs text-muted-foreground/70">Protection</span>
+                </div>
               </div>
-            ))}
+              
+              {/* Duplicate set for seamless loop */}
+              <div className="flex space-x-20 items-center min-w-fit">
+                <div className="flex flex-col items-center group hover:scale-110 transition-all duration-300">
+                  <div className="w-20 h-20 bg-gradient-to-br from-[#61DAFB] to-[#21D4FD] rounded-xl flex items-center justify-center shadow-lg mb-3 border-2 border-white/20 group-hover:border-white/40 transition-all">
+                    <ReactLogo className="w-12 h-12 text-white" />
+                  </div>
+                  <span className="text-sm font-medium text-muted-foreground">React</span>
+                  <span className="text-xs text-muted-foreground/70">Frontend</span>
+                </div>
+                
+                <div className="flex flex-col items-center group hover:scale-110 transition-all duration-300">
+                  <div className="w-20 h-20 bg-gradient-to-br from-[#68A063] to-[#44883e] rounded-xl flex items-center justify-center shadow-lg mb-3 border-2 border-white/20 group-hover:border-white/40 transition-all">
+                    <NodeLogo className="w-12 h-12 text-white" />
+                  </div>
+                  <span className="text-sm font-medium text-muted-foreground">Node.js</span>
+                  <span className="text-xs text-muted-foreground/70">Backend</span>
+                </div>
+                
+                <div className="flex flex-col items-center group hover:scale-110 transition-all duration-300">
+                  <div className="w-20 h-20 bg-gradient-to-br from-[#336791] to-[#2d5aa0] rounded-xl flex items-center justify-center shadow-lg mb-3 border-2 border-white/20 group-hover:border-white/40 transition-all">
+                    <PostgreSQLLogo className="w-12 h-12 text-white" />
+                  </div>
+                  <span className="text-sm font-medium text-muted-foreground">PostgreSQL</span>
+                  <span className="text-xs text-muted-foreground/70">Database</span>
+                </div>
+                
+                <div className="flex flex-col items-center group hover:scale-110 transition-all duration-300">
+                  <div className="w-20 h-20 bg-gradient-to-br from-[#3776ab] to-[#ffd343] rounded-xl flex items-center justify-center shadow-lg mb-3 border-2 border-white/20 group-hover:border-white/40 transition-all">
+                    <PythonLogo className="w-12 h-12 text-white" />
+                  </div>
+                  <span className="text-sm font-medium text-muted-foreground">Python</span>
+                  <span className="text-xs text-muted-foreground/70">AI/ML</span>
+                </div>
+                
+                <div className="flex flex-col items-center group hover:scale-110 transition-all duration-300">
+                  <div className="w-20 h-20 bg-gradient-to-br from-primary to-primary-glow rounded-xl flex items-center justify-center shadow-lg mb-3 border-2 border-white/20 group-hover:border-white/40 transition-all">
+                    <Brain className="w-10 h-10 text-white" />
+                  </div>
+                  <span className="text-sm font-medium text-muted-foreground">AI Engine</span>
+                  <span className="text-xs text-muted-foreground/70">Intelligence</span>
+                </div>
+                
+                <div className="flex flex-col items-center group hover:scale-110 transition-all duration-300">
+                  <div className="w-20 h-20 bg-gradient-to-br from-accent to-accent/70 rounded-xl flex items-center justify-center shadow-lg mb-3 border-2 border-white/20 group-hover:border-white/40 transition-all">
+                    <Shield className="w-10 h-10 text-white" />
+                  </div>
+                  <span className="text-sm font-medium text-muted-foreground">Security</span>
+                  <span className="text-xs text-muted-foreground/70">Protection</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -222,19 +332,21 @@ const Index = () => {
           <p className="text-muted-foreground mb-4">
             Platform kesehatan reproduksi terpercaya untuk wanita Indonesia
           </p>
-          <div className="flex items-center justify-center space-x-6 text-sm text-muted-foreground">
-            <span className="flex items-center gap-1">
-              <Lock className="w-4 h-4" />
-              ISO 27001 Certified
-            </span>
-            <span className="flex items-center gap-1">
-              <Shield className="w-4 h-4" />
-              HIPAA Compliant
-            </span>
-            <span className="flex items-center gap-1">
+          <div className="space-y-2 text-sm text-muted-foreground">
+            <div className="flex items-center justify-center gap-1">
               <Award className="w-4 h-4" />
-              Medically Reviewed
-            </span>
+              <span>Tim Dakelunang</span>
+            </div>
+            <div className="flex items-center justify-center gap-1">
+              <Shield className="w-4 h-4" />
+              <span>Universitas Syiah Kuala</span>
+            </div>
+            <div className="text-center">
+              <span>SECOMP Web Development 2025</span>
+            </div>
+            <div className="mt-4 pt-4 border-t text-center">
+              <p>&copy; 2025 SITARA by Tim Dakelunang - Universitas Syiah Kuala. Seluruh hak cipta dilindungi.</p>
+            </div>
           </div>
         </div>
       </footer>

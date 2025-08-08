@@ -43,26 +43,16 @@ const educationContent: EducationContent[] = [
     readTime: 8,
     views: 2450,
     difficulty: "beginner",
-    content: `
-      Kista ovarium adalah kantung berisi cairan yang berkembang pada atau dalam ovarium. 
-      Sebagian besar kista ovarium bersifat jinak dan tidak menimbulkan gejala.
-      
-      **Jenis Kista Ovarium:**
-      
-      1. **Kista Fungsional**
-         - Kista folikel: Terbentuk ketika folikel tidak melepaskan sel telur
-         - Kista korpus luteum: Terbentuk setelah pelepasan sel telur
-      
-      2. **Kista Non-Fungsional**
-         - Kista dermoid: Mengandung jaringan seperti rambut, kulit, atau gigi
-         - Kistadenoma: Berkembang dari sel-sel ovarium
-         - Endometrioma: Terkait dengan endometriosis
-      
-      **Fakta Penting:**
-      - 95% kista ovarium bersifat jinak
-      - Banyak wanita mengalami kista tanpa menyadarinya
-      - Sebagian besar kista hilang dengan sendirinya
-    `
+    content: `Menurut Nur Walyuni dkk. (2022) dalam studi kasus di Jurnal Fakultas Kesehatan Masyarakat Universitas Muslim Indonesia, Kista ovarium adalah sebuah kantong kecil berisi cairan yang terbentuk di dalam indung telur (ovarium). Kista ini sering disebut kista fungsional karena muncul setelah sel telur dilepaskan saat proses ovulasi. Kista ini bisa memengaruhi siklus haid wanita karena mengganggu keseimbangan hormon. Biasanya, kista fungsional akan mengecil dan hilang dengan sendirinya dalam waktu 1 sampai 3 bulan. Setelah menopause (masa berhentinya haid), kista jenis ini jarang terbentuk karena aktivitas indung telur menurun. Meski begitu, kista ovarium memiliki risiko tertentu, seperti berubah menjadi kanker atau mengalami kondisi torsi, yaitu saat kista tersebut berputar dan menyebabkan jaringan ovarium tertekan hingga bisa mati. Karena itu, kista ovarium penting untuk diperhatikan demi menjaga kesehatan reproduksi wanita.
+
+Kista ovarium sering disebut sebagai “pembunuh diam-diam” karena biasanya tidak menimbulkan gejala awal, sehingga banyak wanita tidak menyadarinya sampai kista tumbuh cukup besar hingga dapat dirasakan dari luar.
+
+Jenis-jenis kista ovarium juga beragam, misalnya:
+• Kista fungsional, berisi cairan bening,
+• Kista merah (kista rubrum), berisi darah,
+• Kista dermoid yang berisi bahan-bahan seperti gigi, rambut, dan lemak,
+• Kista fibroma yang berisi jaringan ikat padat.
+Beberapa kista bersifat jinak dan hilang sendiri tanpa perlu operasi, sedangkan yang lain bisa bersifat tumor dan perlu penanganan operasi.`
   },
   {
     id: "2",

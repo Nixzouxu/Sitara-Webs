@@ -3,6 +3,7 @@ import { Navigate, useNavigate } from "react-router-dom"; // Import useNavigate
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
@@ -28,87 +29,215 @@ interface Question {
   required: boolean;
 }
 
-// Daftar pertanyaan yang disesuaikan agar sesuai dengan input model Flask
+// Daftar pertanyaan yang disesuaikan dengan daftar terbaru dari user
 const questions: Question[] = [
-  {
-    id: "age",
-    category: "personal",
-    question: "Berapa usia Anda saat ini?",
-    options: [
-      { value: "20", label: "20 tahun atau kurang" },
-      { value: "25", label: "21-25 tahun" },
-      { value: "30", label: "26-30 tahun" },
-      { value: "35", label: "31-35 tahun" },
-      { value: "40", label: "36-40 tahun" },
-      { value: "45", label: "41-45 tahun" },
-      { value: "50", label: "46-50 tahun" },
-      { value: "55", label: "Lebih dari 50 tahun" }
-    ],
-    required: true
-  },
-  {
-    id: "menstrual_irregularity",
-    category: "symptom",
-    question: "Apakah Anda mengalami ketidakteraturan menstruasi?",
-    options: [
-      { value: "0", label: "Tidak" },
-      { value: "1", label: "Ya" }
-    ],
-    required: true
-  },
-  {
-    id: "chronic_pain_level",
-    category: "symptom",
-    question: "Bagaimana tingkat nyeri kronis yang Anda alami (skala 0-10, 0=tidak ada, 10=sangat parah)?",
-    options: [
-      { value: "0", label: "0 (Tidak ada)" },
-      { value: "1", label: "1" },
-      { value: "2", label: "2" },
-      { value: "3", label: "3" },
-      { value: "4", label: "4" },
-      { value: "5", label: "5 (Sedang)" },
-      { value: "6", label: "6" },
-      { value: "7", label: "7" },
-      { value: "8", label: "8" },
-      { value: "9", label: "9" },
-      { value: "10", label: "10 (Sangat parah)" }
-    ],
-    required: true
-  },
-  {
-    id: "hormone_level_abnormality",
-    category: "risk_factor",
-    question: "Apakah Anda memiliki riwayat kelainan kadar hormon?",
-    options: [
-      { value: "0", label: "Tidak" },
-      { value: "1", label: "Ya" }
-    ],
-    required: true
-  },
-  {
-    id: "infertility",
-    category: "risk_factor",
-    question: "Apakah Anda memiliki riwayat infertilitas (kesulitan hamil)?",
-    options: [
-      { value: "0", label: "Tidak" },
-      { value: "1", label: "Ya" }
-    ],
-    required: true
-  },
-  {
-    id: "bmi",
-    category: "personal",
-    question: "Berapakah BMI (Indeks Massa Tubuh) Anda? (Jika tidak tahu, pilih perkiraan)",
-    options: [
-      { value: "18", label: "<18.5 (Kurus)" },
-      { value: "22", label: "18.5-24.9 (Normal)" },
-      { value: "27", label: "25.0-29.9 (Berat Badan Berlebih)" },
-      { value: "32", label: "30.0-34.9 (Obesitas Kelas I)" },
-      { value: "37", label: "35.0-39.9 (Obesitas Kelas II)" },
-      { value: "40", label: ">=40.0 (Obesitas Kelas III)" }
-    ],
-    required: true
-  }
+    {
+        id: "Usia",
+        category: "personal",
+        question: "Berapa usia Anda saat ini?",
+        options: [],
+        required: true,
+    },
+    {
+        id: "Q1",
+        category: "symptom",
+        question: "Apakah Anda sering merasa kembung?",
+        options: [
+            { value: "0.0", label: "Tidak" },
+            { value: "1.0", label: "Ya" },
+        ],
+        required: true,
+    },
+    {
+        id: "Q2",
+        category: "symptom",
+        question: "Apakah Anda sering buang air kecil?",
+        options: [
+            { value: "0.0", label: "Tidak" },
+            { value: "1.0", label: "Ya" },
+        ],
+        required: true,
+    },
+    {
+        id: "Q3",
+        category: "symptom",
+        question: "Apakah Anda mudah merasa kenyang padahal makan sedikit?",
+        options: [
+            { value: "0.0", label: "Tidak" },
+            { value: "1.0", label: "Ya" },
+        ],
+        required: true,
+    },
+    {
+        id: "Q4",
+        category: "symptom",
+        question: "Apakah Anda mengalami nyeri saat berhubungan intim?",
+        options: [
+            { value: "0.0", label: "Tidak" },
+            { value: "1.0", label: "Ya" },
+        ],
+        required: true,
+    },
+    {
+        id: "Q5",
+        category: "symptom",
+        question: "Apakah siklus menstruasi Anda tidak teratur?",
+        options: [
+            { value: "0.0", label: "Tidak" },
+            { value: "1.0", label: "Ya" },
+        ],
+        required: true,
+    },
+    {
+        id: "Q6",
+        category: "symptom",
+        question: "Apakah Anda sering merasa nyeri di punggung bawah?",
+        options: [
+            { value: "0.0", label: "Tidak" },
+            { value: "1.0", label: "Ya" },
+        ],
+        required: true,
+    },
+    {
+        id: "Q7",
+        category: "symptom",
+        question: "Apakah Anda mengalami nyeri panggul diluar menstruasi?",
+        options: [
+            { value: "0.0", label: "Tidak" },
+            { value: "1.0", label: "Ya" },
+        ],
+        required: true,
+    },
+    {
+        id: "Q8",
+        category: "symptom",
+        question: "Apakah Anda sering merasa lelah tanpa alasan jelas?",
+        options: [
+            { value: "0.0", label: "Tidak" },
+            { value: "1.0", label: "Ya" },
+        ],
+        required: true,
+    },
+    {
+        id: "Q9",
+        category: "symptom",
+        question: "Apakah Anda mengalami perubahan berat badan yang signifikan tanpa penyebab jelas?",
+        options: [
+            { value: "0.0", label: "Tidak" },
+            { value: "1.0", label: "Ya" },
+        ],
+        required: true,
+    },
+    {
+        id: "Q10",
+        category: "symptom",
+        question: "Apakah Anda mengalami nyeri saat buang air besar?",
+        options: [
+            { value: "0.0", label: "Tidak" },
+            { value: "1.0", label: "Ya" },
+        ],
+        required: true,
+    },
+    {
+        id: "Q11",
+        category: "symptom",
+        question: "Apakah Anda pernah mengalami menstruasi yang sangat berat?",
+        options: [
+            { value: "0.0", label: "Tidak" },
+            { value: "1.0", label: "Ya" },
+        ],
+        required: true,
+    },
+    {
+        id: "Q12",
+        category: "risk_factor",
+        question: "Apakah Anda mengalami kesulitan hamil (jika mencoba)?",
+        options: [
+            { value: "0.0", label: "Tidak" },
+            { value: "1.0", label: "Ya" },
+        ],
+        required: true,
+    },
+    {
+        id: "Q13",
+        category: "symptom",
+        question: "Apakah Anda pernah merasa nyeri tajam di salah satu sisi panggul?",
+        options: [
+            { value: "0.0", label: "Tidak" },
+            { value: "1.0", label: "Ya" },
+        ],
+        required: true,
+    },
+    {
+        id: "Q14",
+        category: "symptom",
+        question: "Apakah Anda sering mengalami gangguan pencernaan?",
+        options: [
+            { value: "0.0", label: "Tidak" },
+            { value: "1.0", label: "Ya" },
+        ],
+        required: true,
+    },
+    {
+        id: "Q15",
+        category: "symptom",
+        question: "Apakah Anda pernah melihat pembengkakan di area perut?",
+        options: [
+            { value: "0.0", label: "Tidak" },
+            { value: "1.0", label: "Ya" },
+        ],
+        required: true,
+    },
+    {
+        id: "Q16",
+        category: "symptom",
+        question: "Apakah Anda mengalami nyeri yang memburuk selama menstruasi?",
+        options: [
+            { value: "0.0", label: "Tidak" },
+            { value: "1.0", label: "Ya" },
+        ],
+        required: true,
+    },
+    {
+        id: "Q17",
+        category: "symptom",
+        question: "Apakah nyeri panggul Anda berlangsung lebih dari beberapa menit?",
+        options: [
+            { value: "0.0", label: "Tidak" },
+            { value: "1.0", label: "Ya" },
+        ],
+        required: true,
+    },
+    {
+        id: "Q18",
+        category: "symptom",
+        question: "Apakah Anda mengalami mual atau muntah tanpa penyebab yang jelas?",
+        options: [
+            { value: "0.0", label: "Tidak" },
+            { value: "1.0", label: "Ya" },
+        ],
+        required: true,
+    },
+    {
+        id: "Q19",
+        category: "symptom",
+        question: "Apakah Anda pernah pingsan karena nyeri panggul?",
+        options: [
+            { value: "0.0", label: "Tidak" },
+            { value: "1.0", label: "Ya" },
+        ],
+        required: true,
+    },
+    {
+        id: "Q20",
+        category: "risk_factor",
+        question: "Apakah Anda memiliki riwayat keluarga dengan kista ovarium?",
+        options: [
+            { value: "0.0", label: "Tidak" },
+            { value: "1.0", label: "Ya" },
+        ],
+        required: true,
+    },
 ];
 
 export default function Quiz() {
@@ -121,9 +250,7 @@ export default function Quiz() {
   const [results, setResults] = useState<any>(null); // State ini akan tetap ada untuk tampilan hasil di halaman Quiz
 
   // Navigasi ke halaman login jika pengguna belum terautentikasi
-  if (!user) {
-    return <Navigate to="/login" replace />;
-  }
+  
 
   const currentQuestion = questions[currentStep];
   const progress = ((currentStep + 1) / questions.length) * 100;
@@ -157,17 +284,22 @@ export default function Quiz() {
   const submitQuiz = async () => {
     setIsSubmitting(true); // Menetapkan status sedang mengirim
 
-    try {
+     try {
       // Memetakan jawaban kuesioner ke format yang diharapkan oleh model Flask
       // Data ini akan dikirim ke Node.js, lalu Node.js akan meneruskannya ke Flask
-      const payload = {
-        Age: parseFloat(answers.age || '0'), // Konversi ke float
-        Menstrual_Irregularity: parseInt(answers.menstrual_irregularity || '0'), // Konversi ke int
-        Chronic_Pain_Level: parseInt(answers.chronic_pain_level || '0'), // Konversi ke int
-        Hormone_Level_Abnormality: parseInt(answers.hormone_level_abnormality || '0'), // Konversi ke int
-        Infertility: parseInt(answers.infertility || '0'), // Konversi ke int
-        BMI: parseFloat(answers.bmi || '0'), // Konversi ke float
-      };
+      const payload: Record<string, number> = {};
+
+      // Iterasi melalui semua pertanyaan dan jawaban untuk membuat payload
+      // Konversi nilai string jawaban ke angka (float untuk 'Usia', int untuk lainnya)
+      for (const [key, value] of Object.entries(answers)) {
+        if (key === 'Usia') {
+          payload[key] = parseFloat(value);
+        } else {
+          payload[key] = parseInt(value);
+        }
+      }
+
+      console.log('Mengirim payload ke server:', payload);
 
       // Panggilan API ke backend Node.js Anda (port 5001)
       const response = await fetch("http://localhost:5001/api/predict", {
@@ -215,9 +347,9 @@ export default function Quiz() {
             : "text-destructive",
         classification: classificationMessage // Gunakan pesan klasifikasi yang sudah diperbaiki
       };
-      // --- AKHIR PERBAIKAN ---
+      
 
-      // --- KIRIM HASIL DETEKSI RISIKO KE BACKEND NODE.JS ---
+      // --- KIRIM HASIL DETEKSI RISIKO KE BACKEND ---
       if (user?.id) {
         const riskPayload = {
           userId: user.id,
@@ -405,25 +537,41 @@ export default function Quiz() {
             </Badge>
             <CardTitle className="text-xl">{currentQuestion.question}</CardTitle>
           </CardHeader>
-          <CardContent>
-            <RadioGroup
-              value={answers[currentQuestion.id] || ""}
-              onValueChange={handleAnswer}
-              className="space-y-3"
-            >
-              {currentQuestion.options.map((option) => (
-                <div key={option.value} className="flex items-center space-x-2">
-                  <RadioGroupItem value={option.value} id={option.value} />
-                  <Label 
-                    htmlFor={option.value}
-                    className="text-base cursor-pointer flex-1 p-3 rounded-lg hover:bg-muted/50 transition-colors"
-                  >
-                    {option.label}
-                  </Label>
-                </div>
-              ))}
-            </RadioGroup>
-          </CardContent>
+<CardContent>
+  {currentQuestion.id === "Usia" ? (
+    // Render input number khusus untuk pertanyaan usia
+    <div className="space-y-2">
+      <Input
+        type="number"
+        min="18"
+        max="100"
+        value={answers[currentQuestion.id] || ""}
+        onChange={(e) => handleAnswer(e.target.value)}
+        placeholder="Masukkan usia Anda"
+        className="w-full"
+      />
+    </div>
+  ) : (
+    // Render radio group untuk pertanyaan lainnya
+    <RadioGroup
+      value={answers[currentQuestion.id] || ""}
+      onValueChange={handleAnswer}
+      className="space-y-3"
+    >
+      {currentQuestion.options.map((option) => (
+        <div key={option.value} className="flex items-center space-x-2">
+          <RadioGroupItem value={option.value} id={option.value} />
+          <Label 
+            htmlFor={option.value}
+            className="text-base cursor-pointer flex-1 p-3 rounded-lg hover:bg-muted/50 transition-colors"
+          >
+            {option.label}
+          </Label>
+        </div>
+      ))}
+    </RadioGroup>
+  )}
+</CardContent>
         </Card>
 
         {/* Navigation */}

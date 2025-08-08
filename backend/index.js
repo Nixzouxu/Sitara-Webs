@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
-const fetch = require('node-fetch'); // Digunakan untuk memanggil Flask backend
+const fetch = require('node-fetch'); // Untuk memanggil Flask model
+
 
 const app = express();
 const PORT = process.env.PORT || 5001; // Port untuk server Node.js
@@ -69,34 +70,20 @@ const updateTopicLastActivity = (topicId) => {
 app.use(cors()); // Mengizinkan semua origin untuk pengembangan. Di produksi, batasi ke origin frontend Anda.
 app.use(express.json()); // Mengizinkan parsing body permintaan sebagai JSON
 
-// --- Endpoint Proxy untuk Prediksi Kista (Memanggil Flask) ---
-// Endpoint: POST /api/predict
-app.post('/api/predict', async (req, res) => {
-  try {
-    // Meneruskan data yang diterima dari frontend ke Flask backend
-    const flaskResponse = await fetch('http://localhost:5000/predict', { // Pastikan Flask berjalan di port 5000
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(req.body) // Meneruskan body permintaan
-    });
-
-    if (!flaskResponse.ok) {
-      const errorText = await flaskResponse.text();
-      console.error('Error from Flask:', flaskResponse.status, errorText);
-      return res.status(flaskResponse.status).json({ message: `Error from Flask backend: ${errorText}` });
-    }
-
-    const flaskData = await flaskResponse.json();
-    res.status(200).json(flaskData); // Mengirim kembali hasil dari Flask ke frontend
-  } catch (error) {
-    console.error('Error proxying request to Flask:', error);
-    res.status(500).json({ message: 'Failed to connect to Flask backend or process prediction.', error: error.message });
-  }
+// --- Endpoint untuk tips kesehatan random ---
+app.get('/api/health-tip-of-the-day', (req, res) => {
+  // Pilih tips secara acak setiap kali dipanggil
+  const randomIndex = Math.floor(Math.random() * healthTips.length);
+  const tipOfTheDay = healthTips[randomIndex];
+  res.status(200).json({ tip: tipOfTheDay });
 });
 
-// --- Endpoint API untuk Melacak Modul Edukasi yang Dibuka ---
-// Endpoint: POST /api/education/track-module
-// Menerima: { userId: string, moduleId: string }
+// --- Endpoint Proxy untuk Prediksi Kista (Memanggil Flask) ---
+// Perhatian: Endpoint ini sekarang digunakan oleh Quiz.tsx untuk mengirim jawaban dan mendapatkan hasil
+
+
+
+// --- Endpoint API untuk Melacak Modul Edukasi yang sudah dibuka ---
 app.post('/api/education/track-module', (req, res) => {
   const { userId, moduleId } = req.body;
 
@@ -118,8 +105,6 @@ app.post('/api/education/track-module', (req, res) => {
 });
 
 // --- Endpoint API untuk Mendapatkan Jumlah Modul yang Dibuka ---
-// Endpoint: GET /api/education/opened-count/:userId
-// Mengembalikan: { openedCount: number, openedModuleIds: string[] }
 app.get('/api/education/opened-count/:userId', (req, res) => {
   const { userId } = req.params;
 
@@ -128,61 +113,13 @@ app.get('/api/education/opened-count/:userId', (req, res) => {
   }
 
   const openedModuleIds = openedModulesByUser[userId] || [];
-  res.status(200).json({ 
+  res.status(200).json({
     openedCount: openedModuleIds.length,
     openedModuleIds: openedModuleIds // Mengirimkan ID juga untuk sinkronisasi UI
   });
 });
 
-// --- Endpoint API untuk Menyimpan Hasil Deteksi Risiko ---
-// Endpoint: POST /api/risk-assessment
-// Menerima: { userId: string, riskStatus: string, lastQuizDate: string, riskLevel: string }
-app.post('/api/risk-assessment', (req, res) => {
-  const { userId, riskStatus, lastQuizDate, riskLevel } = req.body; // quizCount tidak lagi diterima dari frontend
-
-  if (!userId || !riskStatus || !lastQuizDate || !riskLevel) {
-    return res.status(400).json({ message: 'Missing required fields for risk assessment.' });
-  }
-
-  // Dapatkan quizCount saat ini atau inisialisasi ke 0, lalu tambahkan 1
-  const currentQuizCount = (userRiskAssessments[userId]?.quizCount || 0);
-  const newQuizCount = currentQuizCount + 1;
-
-  userRiskAssessments[userId] = {
-    quizCount: newQuizCount, // Gunakan quizCount yang baru dihitung
-    riskStatus,
-    lastQuizDate,
-    riskLevel
-  };
-
-  console.log('User Risk Assessments (in-memory):', userRiskAssessments);
-  res.status(200).json({ message: 'Risk assessment saved successfully.', newQuizCount }); // Opsional: kirim kembali jumlah baru
-});
-
-// --- Endpoint API untuk Mendapatkan Hasil Deteksi Risiko ---
-// Endpoint: GET /api/risk-assessment/:userId
-// Mengembalikan: { quizCount: number, riskStatus: string, lastQuizDate: string, riskLevel: string }
-app.get('/api/risk-assessment/:userId', (req, res) => {
-  const { userId } = req.params;
-
-  if (!userId) {
-    return res.status(400).json({ message: 'UserId is required.' });
-  }
-
-  const assessment = userRiskAssessments[userId] || {
-    quizCount: 0,
-    riskStatus: "Tidak diketahui",
-    lastQuizDate: null,
-    riskLevel: null
-  };
-  res.status(200).json(assessment);
-});
-
-
 // --- Endpoint API untuk Forum ---
-
-// Endpoint: GET /api/forum/topics
-// Mengembalikan semua topik forum
 app.get('/api/forum/topics', (req, res) => {
   // Mengirimkan salinan topik untuk menghindari modifikasi langsung dari luar
   res.status(200).json(forumTopics.map(topic => ({
@@ -253,12 +190,80 @@ app.post('/api/forum/topics/:topicId/posts', (req, res) => {
   res.status(201).json(newPost);
 });
 
-// Endpoint: GET /api/health-tip-of-the-day
-app.get('/api/health-tip-of-the-day', (req, res) => {
-  // Pilih tips secara acak setiap kali dipanggil
-  const randomIndex = Math.floor(Math.random() * healthTips.length);
-  const tipOfTheDay = healthTips[randomIndex];
-  res.status(200).json({ tip: tipOfTheDay });
+// Endpoint untuk menerima jawaban dari frontend dan meneruskannya ke server Flask
+app.post('/api/predict', async (req, res) => {
+    try {
+        const answers = req.body;
+        console.log('Menerima jawaban dari frontend:', answers);
+
+        // Kirim data jawaban ke server Flask
+        const flaskResponse = await fetch('http://localhost:5000/predict', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(answers),
+        });
+
+        // Periksa jika respons dari Flask tidak OK
+        if (!flaskResponse.ok) {
+            const errorText = await flaskResponse.text();
+            throw new Error(`Flask server error: ${errorText}`);
+        }
+
+        const flaskData = await flaskResponse.json();
+        console.log('Menerima prediksi dari Flask:', flaskData);
+
+        // Kirim respons dari Flask kembali ke frontend
+        res.json(flaskData);
+    } catch (error) {
+        console.error('Terjadi kesalahan:', error);
+        res.status(500).json({ error: 'Gagal memproses permintaan.' });
+    }
+});
+
+// --- Endpoint API untuk Menyimpan Hasil Deteksi Risiko ---
+// Endpoint ini sekarang tidak lagi digunakan karena logika penyimpanan sudah dipindahkan ke /api/quiz/submit
+// Namun, saya tetap menyimpannya agar tidak ada perubahan pada alur lain.
+app.post('/api/risk-assessment', (req, res) => {
+  const { userId, riskStatus, lastQuizDate, riskLevel } = req.body; // quizCount tidak lagi diterima dari frontend
+
+  if (!userId || !riskStatus || !lastQuizDate || !riskLevel) {
+    return res.status(400).json({ message: 'Missing required fields for risk assessment.' });
+  }
+
+  // Dapatkan quizCount saat ini atau inisialisasi ke 0, lalu tambahkan 1
+  const currentQuizCount = (userRiskAssessments[userId]?.quizCount || 0);
+  const newQuizCount = currentQuizCount + 1;
+
+  userRiskAssessments[userId] = {
+    quizCount: newQuizCount, // Gunakan quizCount yang baru dihitung
+    riskStatus,
+    lastQuizDate,
+    riskLevel
+  };
+
+  console.log('User Risk Assessments (in-memory):', userRiskAssessments);
+  res.status(200).json({ message: 'Risk assessment saved successfully.', newQuizCount }); // Opsional: kirim kembali jumlah baru
+});
+
+// --- Endpoint API untuk Mendapatkan Hasil Deteksi Risiko ---
+// Endpoint: GET /api/risk-assessment/:userId
+// Mengembalikan: { quizCount: number, riskStatus: string, lastQuizDate: string, riskLevel: string }
+app.get('/api/risk-assessment/:userId', (req, res) => {
+  const { userId } = req.params;
+
+  if (!userId) {
+    return res.status(400).json({ message: 'UserId is required.' });
+  }
+
+  const assessment = userRiskAssessments[userId] || {
+    quizCount: 0,
+    riskStatus: "Tidak diketahui",
+    lastQuizDate: null,
+    riskLevel: null
+  };
+  res.status(200).json(assessment);
 });
 
 
