@@ -84,17 +84,11 @@ export function Header({ user, onLogout }: HeaderProps) {
                 <DropdownMenuContent className="w-56" align="end">
                   <div className="flex items-center justify-start gap-2 p-2">
                     <div className="flex flex-col space-y-1 leading-none">
-                      <p className="font-medium">{user.name}</p>
-                      <p className="w-[200px] truncate text-sm text-muted-foreground">
-                        {user.email}
-                      </p>
+                      
                     </div>
                   </div>
                   <DropdownMenuItem asChild>
-                    <Link to="/profile" className="cursor-pointer">
-                      <User className="mr-2 h-4 w-4" />
-                      <span>Profil</span>
-                    </Link>
+                   
                   </DropdownMenuItem>
                   <DropdownMenuItem onClick={onLogout} className="cursor-pointer">
                     <LogOut className="mr-2 h-4 w-4" />
