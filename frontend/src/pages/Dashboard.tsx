@@ -298,7 +298,7 @@ export default function Dashboard() {
       description: "Tanya jawab dengan ahli medis",
       icon: Stethoscope,
       href: "/consultation",
-      color: "bg-success",
+      color: "bg-rose-50",
       textColor: "text-success-foreground"
     }
   ];

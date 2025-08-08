@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Label } from "@/components/ui/label";
+import { Link } from "react-router-dom";
 import { 
   MessageCircle, 
   Plus, 
@@ -212,7 +213,17 @@ const Forum = () => {
   // Tampilan detail topik (jika ada topik yang dipilih)
   if (selectedTopic) {
     return (
+      
       <Layout user={user} onLogout={logout}> {/* Fix: Changed user.logout to logout */}
+      {/* Tombol kembali langsung di halaman */}
+          <div className="mb-6">
+            <Button asChild variant="outline" className="flex items-center gap-2">
+              <Link to="/dashboard">
+                <ArrowLeft className="w-4 h-4" />
+                Kembali ke Dashboard
+              </Link>
+            </Button>
+          </div>
         <div className="container mx-auto px-4 py-8">
           <Button 
             variant="ghost" 
@@ -221,7 +232,6 @@ const Forum = () => {
           >
             <ArrowLeft className="w-4 h-4" /> Kembali ke Forum
           </Button>
-
           <Card className="shadow-soft border-0 mb-6">
             <CardHeader>
               <Badge variant="secondary" className="w-fit mb-2">{selectedTopic.category}</Badge>

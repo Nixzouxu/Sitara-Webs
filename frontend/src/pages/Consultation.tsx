@@ -2,6 +2,8 @@ import { Layout } from "@/components/Layout/Layout";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { ArrowLeft } from "lucide-react";
+import { Link } from "react-router-dom";
 import { 
   Stethoscope, 
   Video, 
@@ -11,6 +13,7 @@ import {
   Star,
   MapPin
 } from "lucide-react";
+
 
 const Consultation = () => {
   const doctors = [
@@ -78,6 +81,15 @@ const Consultation = () => {
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
+           {/* Tombol kembali langsung di halaman */}
+          <div className="mb-6">
+            <Button asChild variant="outline" className="flex items-center gap-2">
+              <Link to="/dashboard">
+                <ArrowLeft className="w-4 h-4" />
+                Kembali ke Dashboard
+              </Link>
+            </Button>
+          </div>
           <div className="text-center mb-8">
             <h1 className="text-3xl font-bold text-foreground mb-4">
               Konsultasi dengan Dokter Ahli
@@ -207,5 +219,8 @@ const Consultation = () => {
     </Layout>
   );
 };
+
+
+
 
 export default Consultation;

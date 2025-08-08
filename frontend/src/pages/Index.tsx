@@ -15,12 +15,13 @@ import {
   Award,
   Lock
 } from "lucide-react";
-import { useAuth } from "@/contexts/AuthContext";
+// Impor useAuth telah dihapus
 import { ReactLogo, NodeLogo, PostgreSQLLogo, PythonLogo } from "@/components/TechStackLogos";
 
 const Index = () => {
-  const { user } = useAuth();
-
+  // Penggunaan useAuth dan conditional rendering berdasarkan user telah dihapus
+  // const { user } = useAuth();
+  
   const features = [
     {
       icon: Brain,
@@ -61,32 +62,27 @@ const Index = () => {
     { number: "100%", label: "Privasi Terjamin" }
   ];
 
-  if (user) {
-    return (
-      <div className="min-h-screen bg-gradient-subtle">
-        {/* Redirect authenticated users to dashboard */}
-        <div className="container mx-auto px-4 py-16 text-center">
-          <div className="max-w-2xl mx-auto">
-            <h1 className="text-4xl font-bold mb-4">
-              Selamat datang kembali, {user.name}!
-            </h1>
-            <p className="text-xl text-muted-foreground mb-8">
-              Lanjutkan perjalanan kesehatan Anda dengan SITARA
-            </p>
-            <Button size="lg" asChild className="bg-gradient-primary shadow-soft">
-              <Link to="/dashboard">
-                Masuk ke Dashboard
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
   return (
     <div className="min-h-screen bg-gradient-subtle">
+      {/* Definisi animasi CSS untuk tech stack logos */}
+      <style>
+        {`
+          @keyframes scroll-infinite {
+            from {
+              transform: translateX(0);
+            }
+            to {
+              transform: translateX(-50%);
+            }
+          }
+          .animate-scroll-infinite {
+            animation: scroll-infinite 30s linear infinite;
+            display: flex;
+            width: fit-content;
+          }
+        `}
+      </style>
+      
       {/* Header */}
       <header className="sticky top-0 z-50 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b">
         <div className="container mx-auto px-4">
